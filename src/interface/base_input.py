@@ -9,14 +9,13 @@ class DigitalInput:
         self.pin_id = pin_id
         self.pin = Pin(pin_id, Pin.IN, Pin.PULL_DOWN)
     def value(self):
+        global sim_input_pins
         global INPUT_MODE
         if INPUT_MODE == 0:
             return self.pin.value()
         elif INPUT_MODE == 1:
-            global sim_input_pins
             return sim_input_pins[self.pin_id]
         elif INPUT_MODE == 2:
-            global sim_input_pins
             next_val = self.pin.value()
             if next_val == sim_input_pins[self.pin_id][1]:
                 return latest_pin_value(self.pin_id)
@@ -54,11 +53,11 @@ def start_input_sim_monitor():
             command = input().strip()
             if command[:9] == "Control::":
                 if command[9:16] == "set_pin":
-                    p, v = *[int(s) for s in command[1:-1].split(",")]
+                    p, v = [int(s) for s in command[1:-1].split(",")]
                     old_v = sim_input_pins[p]
                     sim_input_pins[p] = v
                     sim_input_pins[p][1] = False
-                    if old_v != v && sim_pin_interupt_callbacks[p][1] == v:
+                    if old_v != v and sim_pin_interupt_callbacks[p][1] == v:
                         sim_pin_interupt_callbacks[p][0](p)
                 elif "#" in command[9:]:
                     identifier = command[9:].split("#")

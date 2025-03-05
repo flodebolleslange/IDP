@@ -27,16 +27,16 @@ tank = TrackedTank.default(AXEL_LENGTH, 6.5)
 
 dt = 0.1
 
-tank.drive(0.7)
-for _ in range(20):
-    sleep(dt)
-    print("pos:", tank.tick(dt))
-tank.drive(0.7, 0.02, 0.0)
-for _ in range(20):
-    sleep(dt)
-    print("pos:", tank.tick(dt))
-tank.drive(0.7)
-for _ in range(20):
-    sleep(dt)
-    print("pos:", tank.tick(dt))
-tank.stop()
+# tank.drive(0.7)
+# for _ in range(20):
+#     sleep(dt)
+#     print("pos:", tank.tick(dt))
+# tank.drive(0.7, 0.02, 0.0)
+# for _ in range(20):
+#     sleep(dt)
+#     print("pos:", tank.tick(dt))
+# tank.drive(0.7)
+# for _ in range(20):
+#     sleep(dt)
+#     print("pos:", tank.tick(dt))
+# tank.stop()

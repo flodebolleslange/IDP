@@ -1,7 +1,7 @@
-#1 left, 1 right, 1 middle sensor. 
-#1 left, 1 right, 1 middle sensor. 
+from interface.interface import *
+from interface.linesensors import *
 
-def linefollower():
+def linefollower(Tank):
     
     # black = 0, white = 1
 
